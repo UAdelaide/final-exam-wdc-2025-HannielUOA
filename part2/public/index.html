@@ -47,8 +47,8 @@
           if (storedUserData) {
             try {
               userData.value = JSON.parse(storedUserData);
-              isAuthenticated.value = true;
               
+
             } catch (error) {
               console.error('Failed to parse user data:', error);
 
