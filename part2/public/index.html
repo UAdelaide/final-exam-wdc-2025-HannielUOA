@@ -48,7 +48,7 @@
         const error = ref('');
         const submitted = ref(false);
 
-        const handleSubmit = () => {
+        const handleSubmit = async() => {
           if (!formData.value.username || !formData.value.password) {
             error.value = 'Please fill in all fields';
             return;
