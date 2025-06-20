@@ -108,7 +108,18 @@ app.get('/api/walkrequests/open', async (req, res) => {
 });
 app.get('/api/walkers/summary', async (req, res) => {
     try {
-      const [dogs] = await db.execute('SELECT * FROM Dogs');
+      const [dogs] = await db.execute(`
+        SELECT
+        u.username AS walker_username,
+        COUNT(DISTINCT wr.request_id) AS completed_walks,
+        COUNT(r.rating_id) AS total_ratings,
+        AVG(r.rating) AS average_rating
+      FROM Users u
+      LEFT JOIN WalkRatings r ON u.user_id = r.walker_id
+      LEFT JOIN WalkRequests wr ON r.request_id = wr.request_id AND wr.status = 'completed'
+      WHERE u.role = 'walker'
+      GROUP BY u.user_id, u.username
+      ORDER BY u.username`);
       return res.json(dogs);
     } catch (err) {
       return res.status(500).json({ error: 'Failed to fetch dogs' });
