@@ -34,19 +34,7 @@
   <script>
     const { createApp, ref } = Vue;
     createApp({
-      onMount(()=>{
-        const storedUserData = localStorage.getItem('userData');
 
-      if (storedUserData) {
-        try {
-          userData.value = JSON.parse(storedUserData);
-          isAuthenticated.value = true;
-
-        } catch (error) {
-          console.error('Failed to parse user data:', error);
-
-        }
-      }
       }),
       data() {
         return {
