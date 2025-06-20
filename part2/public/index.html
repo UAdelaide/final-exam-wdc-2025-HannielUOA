@@ -14,7 +14,7 @@
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <p class="lead">Welcome to the Dog Walking Service!</p>
-    <form ="">
+    <form @submit.prevent="handleSubmit">
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Username</label>
         <input v-model= "formData.username" type="text" class="form-control" id="formGroupExampleInput">
