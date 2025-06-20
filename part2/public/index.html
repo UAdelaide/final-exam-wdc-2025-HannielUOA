@@ -73,7 +73,7 @@
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ username, password })
+                            body: JSON({ username, password })
                         });
                         return await response.json();
           } catch (error) {
