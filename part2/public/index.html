@@ -74,7 +74,7 @@
           try {
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) {
-              localStorage.setItem('userdata', JSON.stringify(response.user))
+              localStorage.setItem('userData', JSON.stringify(response.user))
               if (response.user.role === 'owner') window.location.href = 'owner-dashboard.html';
               if (response.user.role === 'walker') window.location.href = 'walker-dashboard.html';
             }
