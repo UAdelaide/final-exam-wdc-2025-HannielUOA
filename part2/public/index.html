@@ -58,7 +58,7 @@
           try {
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) (
-              localStorage.setItem()
+              localStorage.setItem('userdata')
             )
           } catch (error) {
             console.error(error)
