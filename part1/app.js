@@ -86,7 +86,7 @@ VALUES
 // Route to return books as JSON
 app.get('/api/dogs', async (req, res) => {
   try {
-    const [dogs] = await db.execute('SELECT owner_id, name, size FROM Dogs');
+    const [dogs] = await db.execute('Select d.name, d.size , u.username from Dogs d JOIN Users u ON d.owner_id = u.user_id;');
     return res.json(dogs);
   } catch (err) {
     return res.status(500).json({ error: 'Failed to fetch books' });
