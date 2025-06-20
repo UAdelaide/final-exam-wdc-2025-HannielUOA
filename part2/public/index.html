@@ -60,8 +60,8 @@
             if (response && response.user) {
               localStorage.setItem('userdata', response.user)
               window.location.href= 'owner-dashboard.html'
-              if(response.user.role === 'owner')window.location.href= 'owner-dashboard.html'
-
+              if(response.user.role === 'owner') window.location.href= 'owner-dashboard.html';
+              if(response.user.role === 'owner') window.location.href= 'owner-dashboard.html';
             }
           } catch (error) {
             console.error(error)
