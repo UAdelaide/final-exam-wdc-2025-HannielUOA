@@ -108,7 +108,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
 });
 app.get('/api/walkers/summary', async (req, res) => {
     try {
-      const [dogs] = await db.execute(`
+      const [summary] = await db.execute(`
         SELECT
         u.username AS walker_username,
         COUNT(DISTINCT wr.request_id) AS completed_walks,
@@ -120,7 +120,7 @@ app.get('/api/walkers/summary', async (req, res) => {
       WHERE u.role = 'walker'
       GROUP BY u.user_id, u.username
       ORDER BY u.username`);
-      return res.json(dogs);
+      return res.json(summary);
     } catch (err) {
       return res.status(500).json({ error: 'Failed to fetch dogs' });
     }
