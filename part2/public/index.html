@@ -70,6 +70,7 @@
                             },
                             body: JSON.stringify({ username, password })
                         });
+                        return await response.json();
           } catch (error) {
             throw error
 
