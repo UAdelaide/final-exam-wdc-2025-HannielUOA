@@ -59,7 +59,7 @@
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) (
               localStorage.setItem('userdata', response.user)
-              window.location.href= owner
+              window.location.href= 'owner'
             )
           } catch (error) {
             console.error(error)
