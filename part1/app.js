@@ -111,7 +111,7 @@ app.get('/api/walkers/summary', async (req, res) => {
       const [dogs] = await db.execute('SELECT * FROM Dogs');
       return res.json(dogs);
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to fetch books' });
+      return res.status(500).json({ error: 'Failed to fetch dogs' });
     }
 });
 app.use(express.static(path.join(__dirname, 'public')));
