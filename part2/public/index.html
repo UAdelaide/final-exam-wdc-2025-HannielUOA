@@ -59,9 +59,8 @@
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) {
               localStorage.setItem('userdata', response.user)
-              window.location.href= 'owner-dashboard.html'
               if(response.user.role === 'owner') window.location.href= 'owner-dashboard.html';
-              if(response.user.role === 'owner') window.location.href= 'owner-dashboard.html';
+              if(response.user.role === 'walker') window.location.href= 'walker-dashboard.html';
             }
           } catch (error) {
             console.error(error)
