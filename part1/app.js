@@ -35,20 +35,6 @@ let db;
     });
 
     // Insert data if table is empty
-    const [dogsrows] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
-    if (dogsrows[0].count === 0) {
-        await db.execute(`
-    INSERT INTO Dogs (owner_id, name, size)
-
-VALUES
-
-((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
-((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
-((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Chloe', 'small'),
-((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Rye', 'small'),
-((SELECT user_id FROM Users WHERE username = 'cynthia'), 'Shallow', 'Big');
-      `);
-    }
     const [usersrows] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (usersrows[0].count === 0) {
       await db.execute(`
@@ -63,6 +49,21 @@ VALUES
 ('hanniel', 'hanniel@example.com', 'hashed321', 'owner');
       `);
     }
+    const [dogsrows] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
+    if (dogsrows[0].count === 0) {
+        await db.execute(`
+    INSERT INTO Dogs (owner_id, name, size)
+
+VALUES
+
+((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
+((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
+((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Chloe', 'small'),
+((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Rye', 'small'),
+((SELECT user_id FROM Users WHERE username = 'cynthia'), 'Shallow', 'Big');
+      `);
+    }
+
     const [walkrequestsrows] = await db.execute('SELECT COUNT(*) AS count FROM WalkRequests');
     if (walkrequestsrows[0].count === 0) {
       await db.execute(`
