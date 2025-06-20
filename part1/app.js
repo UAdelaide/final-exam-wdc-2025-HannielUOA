@@ -49,8 +49,8 @@ VALUES
 ((SELECT user_id FROM Users WHERE username = 'cynthia'), 'Shallow', 'Big');
       `);
     }
-    const [usersrows] = await db.execute('SELECT COUNT(*) AS count FROM books');
-    if (rows[0].count === 0) {
+    const [usersrows] = await db.execute('SELECT COUNT(*) AS count FROM Users');
+    if (usersrows[0].count === 0) {
       await db.execute(`
         INSERT INTO books (title, author) VALUES
         ('1984', 'George Orwell'),
