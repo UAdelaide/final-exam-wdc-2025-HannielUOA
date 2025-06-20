@@ -61,7 +61,6 @@
           } catch (error) {
 
           }
-          console.log('Form submitted:', formData.value);
 
           // loginUser(formData.value.username, formData.value.password)
         };
@@ -70,7 +69,6 @@
           const data = new URLSearchParams()
           data.append('email', username)
           data.append('email', password)
-          console.log(username,password)
           try {
             const response = await fetch(endpoint, {
                             method: 'POST',
