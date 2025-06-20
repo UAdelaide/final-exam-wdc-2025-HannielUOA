@@ -60,7 +60,7 @@ VALUES
 ((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
 ((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Chloe', 'small'),
 ((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Rye', 'small'),
-((SELECT user_id FROM Users WHERE username = 'cynthia'), 'Shallow', 'Big');
+((SELECT user_id FROM Users WHERE username = 'cynthia'), 'Shallow', 'large');
       `);
     }
 
