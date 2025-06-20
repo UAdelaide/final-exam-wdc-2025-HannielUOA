@@ -52,7 +52,7 @@ VALUES
     const [usersrows] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (usersrows[0].count === 0) {
       await db.execute(`
-        SQL INSERT INTO Users (username, email, password_hash, role)
+    INSERT INTO Users (username, email, password_hash, role)
 
 VALUES
 
