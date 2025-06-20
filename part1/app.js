@@ -89,7 +89,7 @@ app.get('/api/dogs', async (req, res) => {
     const [dogs] = await db.execute('Select d.name as dog_name, d.size , u.username as owner_username from Dogs d JOIN Users u ON d.owner_id = u.user_id;');
     return res.json(dogs);
   } catch (err) {
-    return res.status(500).json({ error: 'Failed to fetch books' });
+    return res.status(500).json({ error: 'Failed to fetch dogs' });
   }
 });
 app.get('/api/walkrequests/open', async (req, res) => {
@@ -103,7 +103,7 @@ app.get('/api/walkrequests/open', async (req, res) => {
       `);
       return res.json(dogs);
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to fetch books' });
+      return res.status(500).json({ error: 'Failed to fetch dogs' });
     }
 });
 app.get('/api/walkers/summary', async (req, res) => {
