@@ -67,6 +67,7 @@
         };
         const loginUser = async (username, password) => {
           const endpoint ="http://localhost:8080/api/users/login"
+          const data = 
           console.log(username,password)
           try {
             const response = await fetch(endpoint, {
