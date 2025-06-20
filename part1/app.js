@@ -101,9 +101,9 @@ app.get('/api/walkrequests/open', async (req, res) => {
       JOIN Users u ON d.owner_id = u.user_id
       WHERE wr.status = 'open'
       `);
-      return res.json(dogs);
+      return res.json(walkrequests);
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to fetch dogs' });
+      return res.status(500).json({ error: 'Failed to fetch walk request' });
     }
 });
 app.get('/api/walkers/summary', async (req, res) => {
