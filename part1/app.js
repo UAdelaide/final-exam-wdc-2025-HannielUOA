@@ -75,7 +75,7 @@ VALUES
 ((SELECT dog_id FROM Dogs WHERE name = 'Bella'), '2025-06-10 09:30:00', 45, 'Beachside Ave', 'accepted'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Rye'), '2025-06-10 11:30:00', 30, 'Glenelg Beach', 'accepted'),
 ((SELECT dog_id FROM Dogs WHERE name = 'Shallow'), '2025-06-10 12:30:00', 45, 'Glenelg Beach', 'accepted'),
-((SELECT dog_id FROM Dogs WHERE name = 'Chloe'), '2025-06-10 13:30:00', 45, 'Henley Beach', 'accepted');
+((SELECT dog_id FROM Dogs WHERE name = 'Chloe'), '2025-06-10 13:30:00', 45, 'Henley Beach', 'completed');
       `);
     }
   } catch (err) {
