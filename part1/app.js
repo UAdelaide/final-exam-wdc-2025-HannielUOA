@@ -67,7 +67,7 @@ VALUES
 ('hanniel', 'hanniel@example.com', 'hashed321', 'owner');
       `);
     }
-    const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
+    const [walkrequestsrows] = await db.execute('SELECT COUNT(*) AS count FROM books');
     if (rows[0].count === 0) {
       await db.execute(`
         INSERT INTO books (title, author) VALUES
