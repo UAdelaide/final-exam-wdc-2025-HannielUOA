@@ -38,7 +38,7 @@ let db;
     const [dogsrows] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     if (dogsrows[0].count === 0) {
         await db.execute(`
-        SQL INSERT INTO Dogs (owner_id, name, size)
+    INSERT INTO Dogs (owner_id, name, size)
 
 VALUES
 
@@ -66,7 +66,7 @@ VALUES
     const [walkrequestsrows] = await db.execute('SELECT COUNT(*) AS count FROM WalkRequests');
     if (walkrequestsrows[0].count === 0) {
       await db.execute(`
-        SQL INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
+    INSERT INTO WalkRequests (dog_id, requested_time, duration_minutes, location, status)
 
 VALUES
 
