@@ -17,11 +17,11 @@
     <form @submit.prevent="handleSubmit">
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Username</label>
-        <input v-model= "formData.username" type="text" class="form-control" id="formGroupExampleInput">
+        <input v-model="formData.username" type="text" class="form-control" id="formGroupExampleInput">
       </div>
       <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Password</label>
-        <input v-model= "formData.password" type="password" class="form-control" id="formGroupExampleInput2">
+        <input v-model="formData.password" type="password" class="form-control" id="formGroupExampleInput2">
       </div>
       <div>
         <button class="btn btn-primary" type="submit">Log in</button>
@@ -41,20 +41,20 @@
         };
       },
       setup() {
-        onMount(()=>{
-        const storedUserData = localStorage.getItem('userData');
+        onMount(() => {
+          const storedUserData = localStorage.getItem('userData');
 
-      if (storedUserData) {
-        try {
-          userData.value = JSON.parse(storedUserData);
-          isAuthenticated.value = true;
+          if (storedUserData) {
+            try {
+              userData.value = JSON.parse(storedUserData);
+              isAuthenticated.value = true;
 
-        } catch (error) {
-          console.error('Failed to parse user data:', error);
+            } catch (error) {
+              console.error('Failed to parse user data:', error);
 
-        }
-      }
-      })
+            }
+          }
+        })
         const formData = ref({
           username: '',
           password: ''
@@ -63,7 +63,7 @@
         const error = ref('');
         const submitted = ref(false);
 
-        const handleSubmit = async() => {
+        const handleSubmit = async () => {
           if (!formData.value.username || !formData.value.password) {
             error.value = 'Please fill in all fields';
             return;
@@ -74,8 +74,8 @@
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) {
               localStorage.setItem('userdata', JSON.stringify(response.user))
-              if(response.user.role === 'owner') window.location.href= 'owner-dashboard.html';
-              if(response.user.role === 'walker') window.location.href= 'walker-dashboard.html';
+              if (response.user.role === 'owner') window.location.href = 'owner-dashboard.html';
+              if (response.user.role === 'walker') window.location.href = 'walker-dashboard.html';
             }
           } catch (error) {
             console.error(error)
@@ -84,18 +84,18 @@
           // loginUser(formData.value.username, formData.value.password)
         };
         const loginUser = async (username, password) => {
-          const endpoint ="http://localhost:8080/api/users/login"
+          const endpoint = "http://localhost:8080/api/users/login"
           try {
             const response = await fetch(endpoint, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                              email: username, password:password
-                            })
-                        });
-                        return await response.json();
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                email: username, password: password
+              })
+            });
+            return await response.json();
           } catch (error) {
             throw error
 
