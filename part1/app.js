@@ -122,7 +122,7 @@ app.get('/api/walkers/summary', async (req, res) => {
       ORDER BY u.username`);
       return res.json(summary);
     } catch (err) {
-      return res.status(500).json({ error: 'Failed to fetch dogs' });
+      return res.status(500).json({ error: 'Failed to fetch walker summary' });
     }
 });
 app.use(express.static(path.join(__dirname, 'public')));
