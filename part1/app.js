@@ -99,6 +99,7 @@ app.get('/api/dogs', async (req, res) => {
     } catch (err) {
       return res.status(500).json({ error: 'Failed to fetch books' });
     }
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(8080, () => {
