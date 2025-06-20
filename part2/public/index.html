@@ -47,7 +47,7 @@
           if (storedUserData) {
             try {
               const userData = JSON.parse(storedUserData);
-              if (userData.user.role === 'owner') window.location.href = 'owner-dashboard.html';
+              if (userData.role === 'owner') window.location.href = 'owner-dashboard.html';
               if (userData.user.role === 'walker') window.location.href = 'walker-dashboard.html';
 
             } catch (error) {
