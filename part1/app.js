@@ -84,7 +84,7 @@ VALUES
 })();
 
 // Route to return books as JSON
-app.get('/api', async (req, res) => {
+app.get('/api/dogs', async (req, res) => {
   try {
     const [dogs] = await db.execute('SELECT * FROM Dogs');
     return res.json(dogs);
@@ -92,7 +92,13 @@ app.get('/api', async (req, res) => {
     return res.status(500).json({ error: 'Failed to fetch books' });
   }
 });
-
+app.get('/api/dogs', async (req, res) => {
+    try {
+      const [dogs] = await db.execute('SELECT * FROM Dogs');
+      return res.json(dogs);
+    } catch (err) {
+      return res.status(500).json({ error: 'Failed to fetch books' });
+    }
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(8080, () => {
