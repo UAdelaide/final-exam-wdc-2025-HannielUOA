@@ -89,7 +89,7 @@ app.get('/', async (req, res) => {
     const [dogs] = await db.execute('SELECT * FROM Dogs');
     return res.json(dogs);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch books' });
+    return res.status(500).json({ error: 'Failed to fetch books' });
   }
 });
 
