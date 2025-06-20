@@ -95,6 +95,6 @@ app.get('/', async (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(8080, ()=>{
-    console.log("listening")
-})
+app.listen(8080, () => {
+    console.log("listening");
+});
