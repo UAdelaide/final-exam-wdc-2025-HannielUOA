@@ -35,13 +35,26 @@
     const { createApp, ref } = Vue;
     createApp({
 
-      }),
       data() {
         return {
           message: 'Welcome to the Dog Walking Service!'
         };
       },
       setup() {
+        onMount(()=>{
+        const storedUserData = localStorage.getItem('userData');
+
+      if (storedUserData) {
+        try {
+          userData.value = JSON.parse(storedUserData);
+          isAuthenticated.value = true;
+
+        } catch (error) {
+          console.error('Failed to parse user data:', error);
+
+        }
+      }
+      })
         const formData = ref({
           username: '',
           password: ''
