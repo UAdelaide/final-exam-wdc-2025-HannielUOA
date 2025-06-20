@@ -1,11 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doggy</title>
+    <title>Dog Walker Service</title>
+    <script src="⁦https://unpkg.com/vue@3/dist/vue.global.js⁩"></script>
 </head>
 <body>
+    <div id="app">
+        <h1>Dog of the Day</h1>
 
+        <div v-if="loading">Loading dog information...</div>
+
+        <div v-else>
+            <div>
+                <h2>{{ dogName }}</h2>
+                <img :src="dogImage" alt="">
+                <p>Breed: {{ dogBreed }}</p>
+                <p>Age: {{ dogAge }}</p>
+                <p>Weight: {{ dogWeight }}</p>
+                <p>Favorite Food: {{ dogFood }}</p>
+                <p>Walking Schedule: {{ dogSchedule }}</p>
+                <p>Owner: {{ dogOwner }}</p>
+                <p>Owner Phone: {{ ownerPhone }}</p>
+                <p>Owner Email: {{ ownerEmail }}</p>
+                <p>Vet: {{ dogVet }}</p>
+                <p>Vet Phone: {{ vetPhone }}</p>
+                <p>Training Level: {{ dogTraining }}</p>
+                <p>Last Training Session: {{ lastTraining }}</p>
+                <p>Microchip Number: {{ microchip }}</p>
+                <p>Vaccination Status: {{ vaccinations }}</p>
+                <p>Behavior Notes: {{ behaviorNotes }}</p>
+                <p>Special Requirements: {{ specialRequirements }}</p>
+                <p>Preferred Walk Locations: {{ walkLocations }}</p>
+                <p>Emergency Contact: {{ emergencyContact }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                const dogImage = ref('');
+                const loading = ref(true);
+
+                const dogName = 'Sparky';
+                const dogBreed = 'Mixed Breed';
+                const dogAge = '3 years';
+                const dogWeight = '24.5 lbs';
+                const dogFood = 'Kibble and treats, especially chicken flavored ones';
+                const dogSchedule = 'Mondays at 9am, Wednesdays at 2pm, Fridays at 11am';
+                const dogOwner = 'Jane M. Doe';
+                const ownerPhone = '555-0100';
+                const ownerEmail = 'jane.doe@example.com';
+                const dogVet = 'Dr. Sarah Smith at Animal Care Clinic';
+                const vetPhone = '555-0200';
+                const dogTraining = 'Intermediate (knows sit, stay, come)';
+                const lastTraining = 'March 15, 2023';
+                const microchip = '983-46283-74';
+                const vaccinations = 'Up to date (last rabies shot: 1/5/2023)';
+                const behaviorNotes = 'Pulls on leash sometimes. Barks at squirrels. Doesn\'t like skateboards.';
+                const specialRequirements = 'Needs to avoid other male dogs. Takes medication with breakfast.';
+                const walkLocations = 'Park on Main St, Riverside Trail, or Neighborhood Loop';
+                const emergencyContact = 'John Doe (husband) at 555-0101';
+
+                const fetchDogImage = async () => {
+                    loading.value = true;
+                    try {
+                        const response = await fetch('⁦https://dog.ceo/api/breeds/image/random⁩');
+                        const data = await response.json();
+                        dogImage.value = data.message;
+                    } catch (error) {
+                        console.error('Error fetching dog image:', error);
+                        dogImage.value = '⁦https://via.placeholder.com/300⁩';
+                    } finally {
+                        loading.value = false;
+                    }
+                };
+
+                fetchDogImage();
+
+                return {
+                    dogImage,
+                    loading,
+                    dogName,
+                    dogBreed,
+                    dogAge,
+                    dogWeight,
+                    dogFood,
+                    dogSchedule,
+                    dogOwner,
+                    ownerPhone,
+                    ownerEmail,
+                    dogVet,
+                    vetPhone,
+                    dogTraining,
+                    lastTraining,
+                    microchip,
+                    vaccinations,
+                    behaviorNotes,
+                    specialRequirements,
+                    walkLocations,
+                    emergencyContact
+                };
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
