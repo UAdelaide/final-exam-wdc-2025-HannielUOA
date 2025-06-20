@@ -58,7 +58,7 @@
           try {
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) {
-              localStorage.setItem('userdata', response.user)
+              localStorage.setItem('userdata', response.user))
               if(response.user.role === 'owner') window.location.href= 'owner-dashboard.html';
               if(response.user.role === 'walker') window.location.href= 'walker-dashboard.html';
             }
@@ -85,7 +85,7 @@
             throw error
 
           }
-        }hashed456
+        }
         return {
           formData,
           error,
