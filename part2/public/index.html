@@ -66,9 +66,6 @@
         };
         const loginUser = async (username, password) => {
           const endpoint ="http://localhost:8080/api/users/login"
-          const data = new URLSearchParams()
-          data.append('email', username)
-          data.append('email', password)
           try {
             const response = await fetch(endpoint, {
                             method: 'POST',
