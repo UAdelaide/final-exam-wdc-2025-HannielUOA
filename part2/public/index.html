@@ -37,7 +37,35 @@
           message: 'Welcome to the Dog Walking Service!'
         };
       },
-      
+      setup() {
+                const formData = ref({
+                    username: '',
+                    password: ''
+                });
+
+                const error = ref('');
+                const submitted = ref(false);
+
+                const handleSubmit = () => {
+                    if (!formData.value.username || !formData.value.password) {
+                        error.value = 'Please fill in all fields';
+                        return;
+                    }
+                    error.value = '';
+                    submitted.value = true;
+
+                    console.log('Form submitted:', formData.value);
+
+                    // loginUser(formData.value.username, formData.value.password)
+                };
+
+                return {
+                    formData,
+                    error,
+                    submitted,
+                    handleSubmit
+                };
+            }
     }).mount('#app');
   </script>
 
