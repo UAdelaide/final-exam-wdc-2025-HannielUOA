@@ -19,7 +19,7 @@ let db;
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '' // Set your MySQL root password
+      password: '011093hanniA!' // Set your MySQL root password
     });
 
     // Create the database if it doesn't exist
