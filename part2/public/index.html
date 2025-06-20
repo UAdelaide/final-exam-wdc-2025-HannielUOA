@@ -58,7 +58,7 @@
           try {
             const response = await loginUser(formData.value.username, formData.value.password)
             if (response && response.user) (
-              localStorage.setItem('userdata', response.user)
+              localStorage.setItem('userdata', response.user);
               window.location.href= 'owner-dashboard.html'
             )
           } catch (error) {
