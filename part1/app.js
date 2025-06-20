@@ -67,8 +67,8 @@ VALUES
 ('hanniel', 'hanniel@example.com', 'hashed321', 'owner');
       `);
     }
-    const [walkrequestsrows] = await db.execute('SELECT COUNT(*) AS count FROM books');
-    if (rows[0].count === 0) {
+    const [walkrequestsrows] = await db.execute('SELECT COUNT(*) AS count FROM WalkRequests');
+    if (walkrequestsrows[0].count === 0) {
       await db.execute(`
         INSERT INTO books (title, author) VALUES
         ('1984', 'George Orwell'),
