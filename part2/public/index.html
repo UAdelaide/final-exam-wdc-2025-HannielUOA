@@ -57,8 +57,8 @@
           submitted.value = true;
           try {
             const response = await loginUser(formData.value.username, formData.value.password)
-            console.log response
-          } catch () {
+            console.log(response)
+          } catch (error) {
 
           }
           console.log('Form submitted:', formData.value);
