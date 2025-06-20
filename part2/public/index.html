@@ -71,6 +71,7 @@
                             body: JSON.stringify({ username, password })
                         });
           } catch (error) {
+            throw error
 
           }
         }
