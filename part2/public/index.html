@@ -59,7 +59,7 @@
             const response = await loginUser(formData.value.username, formData.value.password)
             console.log(response)
           } catch (error) {
-
+            console.error(error)
           }
 
           // loginUser(formData.value.username, formData.value.password)
