@@ -57,7 +57,7 @@
           submitted.value = true;
           try {
             const response = await loginUser(formData.value.username, formData.value.password)
-            if (response & )
+            if (response && response.user) ()
           } catch (error) {
             console.error(error)
           }
