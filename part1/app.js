@@ -38,10 +38,15 @@ let db;
     const [dogsrows] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     if (dogsrows[0].count === 0) {
       await db.execute(`
-        INSERT INTO books (title, author) VALUES
-        ('1984', 'George Orwell'),
-        ('To Kill a Mockingbird', 'Harper Lee'),
-        ('Brave New World', 'Aldous Huxley')
+        SQL INSERT INTO Dogs (owner_id, name, size)
+
+VALUES
+
+((SELECT user_id FROM Users WHERE username = 'alice123'), 'Max', 'medium'),
+((SELECT user_id FROM Users WHERE username = 'carol123'), 'Bella', 'small'),
+((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Chloe', 'small'),
+((SELECT user_id FROM Users WHERE username = 'hanniel'), 'Rye', 'small'),
+((SELECT user_id FROM Users WHERE username = 'cynthia'), 'Shallow', 'Big');
       `);
     }
     const [rows] = await db.execute('SELECT COUNT(*) AS count FROM books');
