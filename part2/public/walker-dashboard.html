@@ -48,6 +48,24 @@
         const message = ref('');
         const error = ref('');
         const user = 3;
+        const logout = async () => {
+  try {
+    const res = await fetch('/api/users/logout', {
+      method: 'POST',
+      credentials: 'include'
+    });
+
+    if (res.ok) {
+      localStorage.removeItem('userData');
+      window.location.href = 'index.html'; // or your login page
+    } else {
+      console.error('Logout failed');
+    }
+  } catch (err) {
+    console.error('Logout error:', err);
+  }
+};
+
 
         async function loadWalkRequests() {
           try {
