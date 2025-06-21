@@ -17,3 +17,10 @@ app.use('/api/users', userRoutes);
 
 // Export the app instead of listening here
 module.exports = app;
+
+app.use(session({
+    secret: 'dog-walker-secret', // use environment variable in production
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // true only with HTTPS
+  }));
