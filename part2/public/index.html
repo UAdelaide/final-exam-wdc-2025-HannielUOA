@@ -93,6 +93,7 @@ const loadDogs = async () => {
 };
 
         onMounted(async() => {
+          await loadDogs();
           const storedUserData = localStorage.getItem('userData');
 
           if (storedUserData) {
