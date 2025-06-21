@@ -91,6 +91,10 @@ async function getCurrentUser() {
         }
 
         async function applyToWalk(requestId) {
+          if (!currentUser.value) {
+  error.value = 'User not loaded. Please refresh.';
+  return;
+}
           try {
             const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
