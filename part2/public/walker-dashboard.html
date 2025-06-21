@@ -111,7 +111,7 @@ async function getCurrentUser() {
           }
         }
 
-        onMounted(() => {
+        onMounted(async() => {
           loadWalkRequests();
         });
 
