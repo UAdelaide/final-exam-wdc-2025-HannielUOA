@@ -19,8 +19,8 @@ app.use('/api/users', userRoutes);
 module.exports = app;
 
 app.use(session({
-    secret: 'dog-walker-secret', // use environment variable in production
+    secret: 'dog-walker-secret',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // true only with HTTPS
+    cookie: { secure: false }
   }));
