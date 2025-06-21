@@ -24,7 +24,8 @@
       </thead>
       <tbody>
         <tr v-for="dog in dogs" :key="dog.dog_id">
-          <td><img
+          <td>
+            <img
             :src="dog.image ?? 'https://via.placeholder.com/100'"
             alt="Dog Image"
             width="100"
