@@ -7,6 +7,12 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(session({
+    secret: 'dog-walker-secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }
+  }));
 
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
@@ -18,9 +24,3 @@ app.use('/api/users', userRoutes);
 // Export the app instead of listening here
 module.exports = app;
 
-app.use(session({
-    secret: 'dog-walker-secret',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false }
-  }));
