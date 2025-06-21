@@ -22,10 +22,16 @@
       </thead>
       <tbody>
         <tr v-for="dog in dogs" :key="dog.dog_id">
-          <td><img :src="dog.image" alt="Dog Image" width="100"></td>
-          <td>{{ dog.name }}</td>
-          <td>{{ dog.breed }}</td>
-          <td>{{ dog.age }}</td>
+          <td><img
+            :src="dog.image ?? 'https://via.placeholder.com/100'"
+            alt="Dog Image"
+            width="100"
+            class="img-thumbnail"
+          >
+        </td>
+        <td>{{ dog.name }}</td>
+        <td>{{ dog.breed }}</td>
+        <td>{{ dog.age }}</td>
         </tr>
       </tbody>
     </table>
