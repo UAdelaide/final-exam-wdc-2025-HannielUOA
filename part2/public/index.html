@@ -12,7 +12,7 @@
 <body class="bg-light">
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
-    <form @submit.prevent="handleSubmit" class="mb-4">
+    <form @submit.prevent="handleSubmit" class="mb-4" style="max-width: 300px;">
       <div class="mb-2">
         <label for="formGroupExampleInput" class="form-label">Username</label>
         <input v-model="formData.username" type="text" class="form-control form-control-sm" id="formGroupExampleInput">
