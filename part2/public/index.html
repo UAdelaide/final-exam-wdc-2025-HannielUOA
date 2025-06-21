@@ -11,24 +11,24 @@
 
 <body class="bg-light">
   <h2>All Dogs</h2>
-  <table class="table table-bordered table-striped">
-
-    <thead>
-      <tr>
-        <th>Photo</th>
-        <th>Name</th>
-        <th>Breed</th>
-        <th>Age</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="dog in dogs" :key="dog.dog_id">
-        <td>{{ dog.name }}</td>
-        <td>{{ dog.breed }}</td>
-        <td>{{ dog.age }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table border="1" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Breed</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dog in dogs" :key="dog.dog_id">
+          <td><img :src="dog.image" alt="Dog Image" width="100"></td>
+          <td>{{ dog.name }}</td>
+          <td>{{ dog.breed }}</td>
+          <td>{{ dog.age }}</td>
+        </tr>
+      </tbody>
+    </table>
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <form @submit.prevent="handleSubmit">
