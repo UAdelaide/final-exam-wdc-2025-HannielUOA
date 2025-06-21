@@ -19,7 +19,23 @@ router.get('/', async (req, res) => {
   }
 });
 // for owner (only their own walks)
+router.get('/owner/:ownerId', async (req, res) => {
+  const ownerId = req.params.ownerId;
 
+  try {
+    const [rows] = await db.query(`
+      SELECT wr.*, d.name AS dog_name, d.size
+      FROM WalkRequests wr
+      JOIN Dogs d ON wr.dog_id = d.dog_id
+      WHERE d.owner_id = ?
+    `, [ownerId]);
+
+    res.json(rows);
+  } catch (error) {
+    console.error('SQL Error:', error);
+    res.status(500).json({ error: 'Failed to fetch walk requests for owner' });
+  }
+});
 
 // POST a new walk request (from owner)
 router.post('/', async (req, res) => {
