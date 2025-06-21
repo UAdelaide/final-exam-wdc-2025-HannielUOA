@@ -119,13 +119,18 @@
 
 
         async function loadWalks() {
+          const userData = JSON.parse(localStorage.getItem('userData'));
+          if (!userData) return;
+          const ownerId = userData.user_id;
+
           try {
-            const res = await fetch('/api/walks');
+            const res = await fetch(`/api/walks/owner/${ownerId}`);
             walks.value = await res.json();
           } catch (err) {
             error.value = 'Failed to load walk requests';
           }
         }
+
 
         async function submitWalkRequest() {
           try {
