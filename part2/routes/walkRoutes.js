@@ -3,21 +3,19 @@ const router = express.Router();
 const db = require('../models/db');
 
 // GET all walk requests (for walkers to view)
-router.get('/owner/:ownerId', async (req, res) => {
-  const ownerId = req.params.ownerId;
-
+router.get('/', async (req, res) => {
   try {
     const [rows] = await db.query(`
-      SELECT wr.*, d.name AS dog_name, d.size
+      SELECT wr.*, d.name AS dog_name, d.size, u.username AS owner_name
       FROM WalkRequests wr
       JOIN Dogs d ON wr.dog_id = d.dog_id
-      WHERE d.owner_id = ?
-    `, [ownerId]);
-
+      JOIN Users u ON d.owner_id = u.user_id
+      WHERE wr.status = 'open'
+    `);
     res.json(rows);
   } catch (error) {
     console.error('SQL Error:', error);
-    res.status(500).json({ error: 'Failed to fetch walk requests for owner' });
+    res.status(500).json({ error: 'Failed to fetch walk requests' });
   }
 });
 
