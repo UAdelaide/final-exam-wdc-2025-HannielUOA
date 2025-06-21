@@ -13,5 +13,15 @@ router.get('/my-dogs/:ownerId', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch dogs' });
   }
 });
+// GET all dogs (for homepage display)
+router.get('/', async (req, res) => {
+    try {
+      const [rows] = await db.query('SELECT * FROM Dogs');
+      res.json(rows);
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch dogs' });
+    }
+  });
+
 
 module.exports = router;
