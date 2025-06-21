@@ -10,9 +10,33 @@
 </head>
 
 <body class="bg-light">
-  
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
+    <h2>All Dogs</h2>
+    <table border="1" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Breed</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dog in dogs" :key="dog.dog_id">
+          <td><img
+            :src="dog.image ?? 'https://via.placeholder.com/100'"
+            alt="Dog Image"
+            width="100"
+            class="img-thumbnail"
+          >
+        </td>
+        <td>{{ dog.name }}</td>
+        <td>{{ dog.breed }}</td>
+        <td>{{ dog.age }}</td>
+        </tr>
+      </tbody>
+    </table>
     <form @submit.prevent="handleSubmit">
       <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Username</label>
