@@ -18,6 +18,8 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch walk requests' });
   }
 });
+// for owner (only their own walks)
+
 
 // POST a new walk request (from owner)
 router.post('/', async (req, res) => {
