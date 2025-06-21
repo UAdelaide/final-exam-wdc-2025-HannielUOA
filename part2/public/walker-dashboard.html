@@ -48,6 +48,20 @@
         const message = ref('');
         const error = ref('');
         const user = 3;
+        const currentUser = ref(null);
+
+async function getCurrentUser() {
+  try {
+    const res = await fetch('/api/users/me', {
+      credentials: 'include'
+    });
+    if (!res.ok) throw new Error('Failed to fetch current user');
+    currentUser.value = await res.json();
+  } catch (err) {
+    console.error('Error fetching user:', err);
+  }
+}
+
         const logout = async () => {
   try {
     const res = await fetch('/api/users/logout', {
