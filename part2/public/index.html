@@ -12,17 +12,21 @@
 <body class="bg-light">
   <div id="app" class="container py-5">
     <h1 class="mb-4 text-primary">{{ message }}</h1>
-    <form @submit.prevent="handleSubmit" class="mb-4" style="max-width: 300px;">
-      <div class="mb-2">
-        <label for="formGroupExampleInput" class="form-label">Username</label>
-        <input v-model="formData.username" type="text" class="form-control form-control-sm" id="formGroupExampleInput">
-      </div>
-      <div class="mb-2">
-        <label for="formGroupExampleInput2" class="form-label">Password</label>
-        <input v-model="formData.password" type="password" class="form-control form-control-sm" id="formGroupExampleInput2">
-      </div>
-      <button class="btn btn-sm btn-primary" type="submit">Log in</button>
-    </form>
+    <div class="d-flex justify-content-center mb-4">
+      <form @submit.prevent="handleSubmit" style="max-width: 300px; width: 100%;">
+        <div class="mb-2">
+          <label for="formGroupExampleInput" class="form-label">Username</label>
+          <input v-model="formData.username" type="text" class="form-control form-control-sm" id="formGroupExampleInput">
+        </div>
+        <div class="mb-2">
+          <label for="formGroupExampleInput2" class="form-label">Password</label>
+          <input v-model="formData.password" type="password" class="form-control form-control-sm" id="formGroupExampleInput2">
+        </div>
+        <div class="text-center">
+          <button class="btn btn-sm btn-primary" type="submit">Log in</button>
+        </div>
+      </form>
+    </div>
 
     <h2>All Registered Dogs</h2>
     <table class="table table-bordered">
