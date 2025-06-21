@@ -14,33 +14,29 @@
     <h1 class="mb-4 text-primary">{{ message }}</h1>
     <h2>All Dogs</h2>
     <h2>All Dogs</h2>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Dog ID</th>
-      <th>Name</th>
-      <th>Size</th>
-      <th>Owner ID</th>
-      <th>Photo</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="dog in dogs" :key="dog.dog_id">
-      <td>{{ dog.dog_id }}</td>
-      <td>{{ dog.name }}</td>
-      <td>{{ dog.size }}</td>
-      <td>{{ dog.owner_id }}</td>
-      <td>
-        <img
-          :src="dog.image || 'https://via.placeholder.com/100'"
-          :alt="dog.name || 'Dog Image'"
-          width="100"
-          class="img-thumbnail"
-        />
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Dog ID</th>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Owner ID</th>
+          <th>Photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dog in dogs" :key="dog.dog_id">
+          <td>{{ dog.dog_id }}</td>
+          <td>{{ dog.name }}</td>
+          <td>{{ dog.size }}</td>
+          <td>{{ dog.owner_id }}</td>
+          <td>
+            <img :src="dog.image || 'https://via.placeholder.com/100'" :alt="dog.name || 'Dog Image'" width="100"
+              class="img-thumbnail" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <form @submit.prevent="handleSubmit">
       <div class="mb-3">
@@ -71,32 +67,32 @@
       setup() {
         const dogs = ref([]);
         const fetchRandomDogImage = async () => {
-  try {
-    const res = await fetch('https://dog.ceo/api/breeds/image/random');
-    const data = await res.json();
-    return data.message;
-  } catch (err) {
-    console.error('Failed to load dog image:', err);
-    return 'https://via.placeholder.com/100';
-  }
-};
+          try {
+            const res = await fetch('https://dog.ceo/api/breeds/image/random');
+            const data = await res.json();
+            return data.message;
+          } catch (err) {
+            console.error('Failed to load dog image:', err);
+            return 'https://via.placeholder.com/100';
+          }
+        };
 
-const loadDogs = async () => {
-  try {
-    const res = await fetch('/api/dogs');
-    const dogList = await res.json();
+        const loadDogs = async () => {
+          try {
+            const res = await fetch('/api/dogs');
+            const dogList = await res.json();
 
-    for (const dog of dogList) {
-      dog.image = await fetchRandomDogImage();
-    }
+            for (const dog of dogList) {
+              dog.image = await fetchRandomDogImage();
+            }
 
-    dogs.value = dogList;
-  } catch (err) {
-    console.error('Failed to load dogs:', err);
-  }
-};
+            dogs.value = dogList;
+          } catch (err) {
+            console.error('Failed to load dogs:', err);
+          }
+        };
 
-        onMounted(async() => {
+        onMounted(async () => {
           await loadDogs();
           const storedUserData = localStorage.getItem('userData');
 
