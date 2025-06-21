@@ -65,6 +65,7 @@
         };
       },
       setup() {
+        const dogs = ref([]);
         onMounted(() => {
           const storedUserData = localStorage.getItem('userData');
 
